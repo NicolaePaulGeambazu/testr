@@ -1,0 +1,111 @@
+/* src/styles/tailwind.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Fasthand&family=Poppins:wght@400;500;600;700&display=swap');
+
+.p-custom {
+  position: relative; /* Add relative positioning to create a stacking context */
+  /* Background image properties */
+    padding: 150px 30px;
+    margin: 15px;
+    background-size: cover; 
+}
+
+.grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    display: grid;
+}
+
+.inputWrapper {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+}
+
+.errorField { 
+    color: red;
+    text-align: end;
+}
+
+.input {
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.inputErrors {
+    border-radius: 15px;
+    border: 1px solid red;
+}
+
+.inputErrors::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    background-image: url('../../public/favicon.ico');
+}
+
+.p-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background: hsl(154, 59%, 51%);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Poppins';
+    font-weight: 500;  
+    border-radius: 5px;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1), 1px 1px 0px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+.textWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+}
+
+.formWrapper {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 35px;
+}
+
+.title {
+    font-family: 'Popins';
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 50px;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: 16px;
+
+}
+
+.componentWrappers { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    padding: 100px;
+    background-color: black;
+}
+
+.box-wrap {
+    background: white;
+    position: absolute;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
