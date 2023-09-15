@@ -1,82 +1,110 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useContext } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import Button from '../../Components/Button/Button';
 import DataEntry from '../../Components/DataEntry/DataEntry';
-import '../../styles/tailwind.css';
-
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+import { UserSetupContext } from '../../Components/Context/ContextSignUp';
 
 function Form() {
+  const { onSubmit } = useContext(UserSetupContext);
   const {
     handleSubmit,
-    control,
     formState: { errors },
-  } = useForm<FormData>();
-
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-  };
+    control,
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    },
+  });
 
   return (
-    <div className="flex items-center justify-center bg-gray-100">
-      <div className="absolute bg-white p-8 rounded shadow-md">
-        <form className="formWrapper" onSubmit={handleSubmit(onSubmit)}>
-          <div className="inputWrapper"> {/* Flex container for each input */}
-            <DataEntry
-              label="First Name"
-              name="firstName"
-              errors={errors}
-              control={control}
-              rules={{ required: 'First name is required' }}
-            />
-          </div>
-          <div className="inputWrapper">
-            <DataEntry
-              label="Last Name"
-              name="lastName"
-              errors={errors}
-              control={control}
-              rules={{ required: 'Last name is required' }}
-            />
-          </div>
-          <div className="inputWrapper">
-            <DataEntry
-              label="Email Address"
-              name="email"
-              errors={errors}
-              control={control}
-              rules={{
-                required: 'Email is required',
-                pattern: {
-                  value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{3,}$/,
-                  message: 'Invalid email address',
-                },
-              }}
-            />
-          </div>
-          <div className="inputWrapper">
-            <DataEntry
-              label="Password"
-              name="password"
-              errors={errors}
-              control={control}
-              rules={{ required: 'Password is required' }}
-              type="password"
-            />
-          </div>
-          <div>
-            <Button color="custom-green" size="large">
-              CLAIM YOUR FREE TRIAL
-            </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="firstName"
+        control={control}
+        defaultValue=""
+        rules={{ required: 'First Name is required' }}
+        render={({ field: { value, onChange} }) => (
+          <DataEntry
+            id="firstname"
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            required
+            error={errors.firstName}
+            onChange={onChange} // Add onChange prop
+            value={value} // Add value prop
+          />
+        )}
+      />
+
+      <Controller
+        name="lastName"
+        control={control}
+        defaultValue=""
+        rules={{ required: 'Last Name is required' }}
+        render={({ field: { value, onChange} }) => (
+          <DataEntry
+            id="lastname"
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            required
+            error={errors.lastName}
+            onChange={onChange} // Add onChange prop
+            value={value} // Add value prop
+          />
+        )}
+      />
+
+      <Controller
+        name="email"
+        control={control}
+        defaultValue=""
+        rules={{ required: 'Email is required' }}
+        render={({ field: { value, onChange} }) => (
+          <DataEntry
+            id="email"
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            required
+            error={errors.email}
+            onChange={onChange} // Add onChange prop
+            value={value} // Add value prop
+          />
+        )}
+      />
+
+      <Controller
+        name="password"
+        control={control}
+        defaultValue=""
+        rules={{ required: 'Password is required' }}
+        render={({ field: {value, onChange} }) => (
+          <DataEntry
+            id="password"
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+            error={errors.password}
+            onChange={onChange} // Add onChange prop
+            value={value} // Add value prop
+          />
+        )}
+      />
+
+      <Button type="submit">Claim your free trial</Button>
+      <p className="ts" id="ts">
+        By clicking the button, you are agreeing to our{' '}
+        <a href="" className="ts__link">
+          Terms and Services
+        </a>
+      </p>
+    </form>
   );
 }
 

@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import '../src/styles/tailwind';
 import App from './App';
+import { UserSetupContextProvider } from './Components/Context/ContextSignUp';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserSetupContextProvider>
+      <App />
+    </UserSetupContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

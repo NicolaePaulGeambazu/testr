@@ -1,18 +1,16 @@
+// Button.tsx
 import React from 'react';
-import '../../styles/tailwind.css';
+import '../../../src/styles/tailwind.css'
+
+
 interface ButtonProps {
-  color: string; // Color of the button (e.g., "blue", "red", "green")
-  size?: 'small' | 'large'; // Size of the button (optional)
-  onSubmit?: () => void; // Function to be executed when clicked (optional)
+  type: 'submit' | 'button' | 'reset';
+  children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ color, children }) => {
-
+const Button: React.FC<ButtonProps> = ({ type, children }) => {
   return (
-    <button
-      className='button'
-      type='submit'
-    >
+    <button className="submit-btn" type={type}>
       {children}
     </button>
   );
