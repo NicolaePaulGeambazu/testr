@@ -5,6 +5,7 @@ import DataEntry from '../../Components/DataEntry/DataEntry';
 import { UserSetupContext } from '../../Components/Context/ContextSignUp';
 
 function Form() {
+  // Get the `onSubmit` function from the context
   const { onSubmit } = useContext(UserSetupContext);
   const {
     handleSubmit,
