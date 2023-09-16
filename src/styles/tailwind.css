@@ -26,13 +26,13 @@ body {
   padding: 80px 24px;
   background-color: var(--red);
   background-image: url('../../public/bg-intro-desktop.png');
-  min-height: 100vh;
+  min-height: 98vh;
 }
 
 @media screen and (min-width: 1200px) {
   body {
     background-image: url('../../public/bg-intro-desktop.png');
-    padding: 24px 160px;
+    padding: 0px 160px;
   }
 }
 
